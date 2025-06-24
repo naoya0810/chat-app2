@@ -1,6 +1,9 @@
-class Room < ApplicationRecord
-  has_many :room_users
-  has_many :users, through: :room_users
+# frozen_string_literal: true
 
-  validates :name, presence: true 
+class Room < ApplicationRecord
+  has_many :room_users,dependent: :destroy
+  has_many :users, through: :room_users
+  has_many :messages, dependent: :destroy
+
+  validates :name, presence: true
 end
