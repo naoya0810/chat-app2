@@ -5,7 +5,15 @@ class RoomsController < ApplicationController
     @room = Room.new
   end
 
-  def index; end
+  def index
+
+  end
+
+  def destroy
+    room = room.find(params[:id])
+    room.destroy
+    redirect_to root_path
+  end
 
   def create
     @room = Room.new(room_params)
